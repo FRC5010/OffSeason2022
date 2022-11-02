@@ -1,5 +1,5 @@
-# OffSeason2022
-
+# 5010 Tiger Dynasty Project Offseason Project
+### Started 11/2/2022
 
 Go To: 
 
@@ -7,12 +7,9 @@ Go To:
 
 [`Controller Assignment for the Robots`](#controls)
 
-[`CAN and System Values`](#motor-values)
+[`CAN and System Values`](#controller-assignment-for-the-robots)
 
-
-
-# 5010 Tiger Dynasty Project
-
+---
 
 ## Objectives
 
@@ -21,53 +18,36 @@ Give new people the challenge project of coding a full robot. Help practice codi
 
 Here are the teams and their assigned Subsystems
 
-![Whiteboard with team names]()
+![Whiteboard with team names](/whiteboard-of-names.jpg)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ## Controls
 
 ### Driver Controls
 - Left Joystick (Drivetrain)
 - Right Joystick (Drivetrain)
--------------------------------------------------
 - Left Trigger (Outtake)
 - Right Trigger (Intake)
--------------------------------------------------
 - Menu Button (Activate Climb Arms)
 
 
 ### CoDriver Controls
 - Left Bumper (Shooter Short)
 - Right Bumper (Shooter Long)
--------------------------------------------------
 - Menu Button (Toggle Climb Arms)
 - Right Joystick (Right Arm)
 - Left Joystick (Left Arm)
--------------------------------------------------
 - A Button (Indexer Down)
 - B Button (Indexer Up)
 - Y Button (Turret Right)
 - X Button (Turret Left)
 
-## Motor Values
+---
+
+## Controller Assignment for the Robots
+
+### Motor Values
 - M1: Left Drive
 - M2: Right Drive
 - M3: Left Drive
@@ -85,7 +65,7 @@ Here are the teams and their assigned Subsystems
 - M15: Right Flywheel
 - M16: Turret
 
-## Pnumatics Hub Values
+### Pnumatics Hub Values
 - P0 and P1: Intake
 - P2 and P3: Climb Arms
 
