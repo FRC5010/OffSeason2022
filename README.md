@@ -1,5 +1,47 @@
 # OffSeason2022
 
+
+Go To: 
+
+[`Objectives`](#objectives)
+
+[`Controller Assignment for the Robots`](#controls)
+
+[`CAN and System Values`](#motor-values)
+
+
+
+# 5010 Tiger Dynasty Project
+
+
+## Objectives
+
+Give new people the challenge project of coding a full robot. Help practice coding on an actual robot before build season. 
+
+
+Here are the teams and their assigned Subsystems
+
+![Whiteboard with team names]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Controls
 
 ### Driver Controls
@@ -42,3 +84,8 @@
 - M14: Left Flywheel
 - M15: Right Flywheel
 - M16: Turret
+
+## Pnumatics Hub Values
+- P0 and P1: Intake
+- P2 and P3: Climb Arms
+
