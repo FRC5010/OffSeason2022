@@ -25,3 +25,20 @@
 - Y Button (Turret Right)
 - X Button (Turret Left)
 
+## Motor Values
+  M1: Left Drive
+  M2: Right Drive
+  M3: Left Drive
+  M4: Right Drive
+  M5: Right Winch
+  M6: Left Winch
+  M7: Intake Motor Upper
+  M8: Diagonal Upper Indexer
+  M9: Diagonal Lower Indexer
+  M10: Vertical Long Indexer
+  M11: Vertical Short Indexer
+  M12: Hood
+  M13: Feeder Left Flywheel
+  M14: Left Flywheel
+  M15: Right Flywheel
+  M16: Turret
