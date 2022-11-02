@@ -6,7 +6,14 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.FRC5010.Controller;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.mechanisms.ClimbMechanism;
+import frc.robot.mechanisms.DrivetrainMechanism;
+import frc.robot.mechanisms.IndexerMechanism;
+import frc.robot.mechanisms.IntakeMechanism;
+import frc.robot.mechanisms.ShooterMechanism;
+import frc.robot.mechanisms.TurretMechanism;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -22,8 +29,24 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  private Controller driver = new Controller(0);
+  private Controller coDriver = new Controller(1);
+  
+  private ClimbMechanism climbMechanism;
+  private DrivetrainMechanism drivetrainMechanism;
+  private IndexerMechanism indexerMechanism;
+  private IntakeMechanism intakeMechanism;
+  private ShooterMechanism shooterMechanism;
+  private TurretMechanism turretMechanism;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    climbMechanism = new ClimbMechanism();
+    drivetrainMechanism = new DrivetrainMechanism();
+    indexerMechanism = new IndexerMechanism();
+    intakeMechanism = new IntakeMechanism();
+    shooterMechanism = new ShooterMechanism();
+    turretMechanism = new TurretMechanism();
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -34,7 +57,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    climbMechanism.configureButtonBindings(driver, coDriver);
+    drivetrainMechanism.configureButtonBindings(driver, coDriver);
+    indexerMechanism.configureButtonBindings(driver, coDriver);
+    intakeMechanism.configureButtonBindings(driver, coDriver);
+    shooterMechanism.configureButtonBindings(driver, coDriver);
+    turretMechanism.configureButtonBindings(driver, coDriver);
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
