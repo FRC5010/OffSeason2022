@@ -47,48 +47,7 @@ public class IntakeMechanism {
     // Only right trigger deploys intake
     // Applying more pressure to the trigger spins the intake faster
     public void configureButtonBindings(Controller driver, Controller coDriver) {
-
+        if (getRTValue(driver) >= -0.8) deployIntake(IntakeSubsystem, 0.0);
         
-        // Trigger Deadzones of 0.2 (-1.0 to -0.8)
-
-        // Use right trigger to set the intake state
-        if (getRTValue(driver) >= -0.8) {
-            if (intakeSubsystem.getIntakeState() == false) intakeSubsystem.intakeDown();
-
-        } else {
-            if (intakeSubsystem.getIntakeState() == true) intakeSubsystem.intakeUp();
-
-        }
-
-        // Motor speeds
-        if (intakeSubsystem.getIntakeState() == true) {
-
-            // If left trigger isn't pressed
-            if (getLTValue(driver) < -0.8){
-
-                // Vary motor velocity based on how far the trigger is pressed
-                if (getRTValue(driver) >= 0.9) {
-                    intakeSubsystem.spinIntake(1.0);
-
-                } else if (getRTValue(driver) >= 0.45) {
-                    intakeSubsystem.spinIntake(0.75);
-
-                } else if (getRTValue(driver) >= -0.9) {
-                    intakeSubsystem.spinIntake(0.5);
-
-                } else if (getRTValue(driver) >= -0.8) {
-                    intakeSubsystem.spinIntake(0.25);
-
-                } else {
-                    intakeSubsystem.spinIntake(0.0);
-
-                }
-
-            // Spin intake in reverse if the left trigger is pressed
-            } else {
-                intakeSubsystem.spinIntake(-0.5);
-
-            }
-        }
     }
 }

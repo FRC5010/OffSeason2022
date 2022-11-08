@@ -8,10 +8,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.FRC5010.Controller;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 /** An example command that uses an example subsystem. */
 public class deployIntake extends CommandBase {
@@ -22,20 +18,24 @@ public class deployIntake extends CommandBase {
    * Creates a new ExampleCommand.
    *
    * @param intakeSubsystem The subsystem used by this command.
+   *
    */
-  public deployIntake(IntakeSubsystem IntakeSubsystem, DoubleSolenoid intakeSolenoid) {
+  private final double intakeSpeed;
+  private final IntakeSubsystem intakeSubsystem;
+  public deployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(IntakeSubsystem);
-    addRequirements(intakeSolenoid);
-
+    this.intakeSubsystem = intakeSubsystem;
+    this.intakeSpeed = intakeSpeed;
+    addRequirements(intakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    intakeSubsystem.intakeDown();
   }
 
+  // Gets Axis value of the right trigger on the driver controller.
   public double getRTValue(Controller driver) {
     return driver.getRightTriggerAxis();
   }
@@ -46,11 +46,38 @@ public class deployIntake extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+
+      // Vary motor velocity based on how far the trigger is pressed
+      if (getRTValue(driver) >= 0.9) {
+        intakeSpeed = 1.0;
+
+      } else if (getRTValue(driver) >= 0.45) {
+        intakeSpeed = 0.75;
+
+      } else if (getRTValue(driver) >= -0.9) {
+        intakeSpeed = 0.5;
+
+      } else if (getRTValue(driver) >= -0.8) {
+        intakeSpeed = 0.25;
+
+      }
+
+      // reverse the speed if the left trigger is pressed
+      if (getLTValue(driver) >= -0.8) {
+        intakeSpeed = -0.3;
+      }
+
+    // spin intake at desired speed
+    intakeSubsystem.spinIntake(intakeSpeed);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    intakeSubsystem.intakeUp();
+    intakeSubsystem.spinIntake(0.0);
+  }
 
   // Returns true when the command should end.
   @Override
