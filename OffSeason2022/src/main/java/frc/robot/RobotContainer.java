@@ -58,12 +58,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    climbMechanism.configureButtonBindings(driver, coDriver);
-    drivetrainMechanism.configureButtonBindings(driver, coDriver);
-    indexerMechanism.configureButtonBindings(driver, coDriver);
+    // climbMechanism.configureButtonBindings(driver, coDriver);
+    // drivetrainMechanism.configureButtonBindings(driver, coDriver);
+    // indexerMechanism.configureButtonBindings(driver, coDriver);
     intakeMechanism.configureButtonBindings(driver, coDriver);
-    shooterMechanism.configureButtonBindings(driver, coDriver);
-    turretMechanism.configureButtonBindings(driver, coDriver);
+    // shooterMechanism.configureButtonBindings(driver, coDriver);
+    // turretMechanism.configureButtonBindings(driver, coDriver);
   }
 
   /**
