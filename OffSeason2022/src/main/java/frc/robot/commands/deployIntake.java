@@ -7,12 +7,14 @@ package frc.robot.commands;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.FRC5010.Controller;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.mechanisms.IntakeMechanism;
 
 
 /** An example command that uses an example subsystem. */
 public class deployIntake extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeSubsystem IntakeSubsystem;
+  // private final IntakeSubsystem intakeSubsystem;
 
   /**
    * Creates a new ExampleCommand.
@@ -20,8 +22,9 @@ public class deployIntake extends CommandBase {
    * @param intakeSubsystem The subsystem used by this command.
    *
    */
-  private final double intakeSpeed;
+  private double intakeSpeed;
   private final IntakeSubsystem intakeSubsystem;
+  private Controller driver;
   public deployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.intakeSubsystem = intakeSubsystem;
@@ -35,38 +38,19 @@ public class deployIntake extends CommandBase {
     intakeSubsystem.intakeDown();
   }
 
-  // Gets Axis value of the right trigger on the driver controller.
-  public double getRTValue(Controller driver) {
-    return driver.getRightTriggerAxis();
-  }
-
-  public double getLTValue(Controller driver) {
-    return driver.getLeftTriggerAxis();
-  }
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-      // Vary motor velocity based on how far the trigger is pressed
-      if (getRTValue(driver) >= 0.9) {
-        intakeSpeed = 1.0;
+    intakeSpeed = driver.getRightTriggerAxis();
 
-      } else if (getRTValue(driver) >= 0.45) {
-        intakeSpeed = 0.75;
+    // reverse the speed if the left trigger is pressed
+    if (driver.getLeftTriggerAxis() >= 0.2) {
+      intakeSpeed = -0.3;
+    }
 
-      } else if (getRTValue(driver) >= -0.9) {
-        intakeSpeed = 0.5;
-
-      } else if (getRTValue(driver) >= -0.8) {
-        intakeSpeed = 0.25;
-
-      }
-
-      // reverse the speed if the left trigger is pressed
-      if (getLTValue(driver) >= -0.8) {
-        intakeSpeed = -0.3;
-      }
+    // reverse when left trigger is active
+    IntakeMechanism.intakeLT.whenHeld(intakeSpeed = -0.3);
 
     // spin intake at desired speed
     intakeSubsystem.spinIntake(intakeSpeed);
