@@ -31,7 +31,13 @@ public class Shoot extends CommandBase {
     double speed = controller.getRightTriggerAxis();
     double inverseSpin = controller.getLeftTriggerAxis();
     speed = speed-inverseSpin;
-    shooter.shoot(speed*.25);
+    
+    if (Math.abs(speed) > 0) {
+      shooter.shootRPM(speed*5000);
+    } else {
+      shooter.shoot(0);
+    }
+    //shooter.shoot(speed*.25);
   }
 
   // Called once the command ends or is interrupted.
