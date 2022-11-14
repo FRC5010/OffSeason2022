@@ -4,6 +4,8 @@
 
 package frc.robot.mechanisms;
 
+import frc.robot.FRC5010.Controller;
+
 /** Add your docs here. */
 public class IndexerMechanism {
 
@@ -11,6 +13,6 @@ public class IndexerMechanism {
 
     }
 
-    public void configureButtonBindings() {
+    public void configureButtonBindings(Controller driver, Controller coDriver) {
     }
 }
