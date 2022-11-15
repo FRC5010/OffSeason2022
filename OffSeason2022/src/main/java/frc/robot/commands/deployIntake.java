@@ -10,7 +10,7 @@ import frc.robot.FRC5010.Controller;
 
 
 /** An example command that uses an example subsystem. */
-public class deployIntake extends CommandBase {
+public class DeployIntake extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   // private final IntakeSubsystem intakeSubsystem;
 
@@ -23,7 +23,7 @@ public class deployIntake extends CommandBase {
   private double intakeSpeed;
   private final IntakeSubsystem intakeSubsystem;
   private Controller driver;
-  public deployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed) {
+  public DeployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.intakeSubsystem = intakeSubsystem;
     this.intakeSpeed = intakeSpeed;
@@ -44,13 +44,13 @@ public class deployIntake extends CommandBase {
       // Right Trigger is forward, left is reverse
       // Spin intake at half speed for safety reasons
     intakeSpeed = (driver.getRightTriggerAxis() - driver.getLeftTriggerAxis()) / 2;
-
-
+    
+    
     // spin intake at desired speed
     intakeSubsystem.spinIntake(intakeSpeed);
-
+    
   }
-
+  
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

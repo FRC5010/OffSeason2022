@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.FRC5010.Controller;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.commands.deployIntake;
+import frc.robot.commands.DeployIntake;
 
 /** Add your docs here. */
 public class IntakeMechanism {
@@ -44,6 +44,6 @@ public class IntakeMechanism {
 
         // Allow either trigger to activate command
         Trigger driverTriggers = new Trigger(() -> (Math.abs(driver.getRightTriggerAxis() + driver.getLeftTriggerAxis()) > 0));
-        driverTriggers.whenActive(new deployIntake(intakeSubsystem, 0));
+        driverTriggers.whenActive(new DeployIntake(intakeSubsystem, 0));
     }
 }
