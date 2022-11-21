@@ -68,4 +68,3 @@ Here are the teams and their assigned Subsystems
 ### Pnumatics Hub Values
 - P0 and P1: Intake
 - P2 and P3: Climb Arms
-
