@@ -13,7 +13,7 @@ import frc.robot.mechanisms.DrivetrainMechanism;
 import frc.robot.mechanisms.IndexerMechanism;
 import frc.robot.mechanisms.IntakeMechanism;
 import frc.robot.mechanisms.ShooterMechanism;
-import frc.robot.mechanisms.TurretMechanism;
+import frc.robot.mechanisms.TurretMechanism; 
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -58,12 +58,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // climbMechanism.configureButtonBindings(driver, coDriver);
-    // drivetrainMechanism.configureButtonBindings(driver, coDriver);
-    // indexerMechanism.configureButtonBindings(driver, coDriver);
+    driver.setLeftYAxis(driver.createLeftYAxis());
+    driver.setRightXAxis(driver.createRightXAxis());
+    
+    climbMechanism.configureButtonBindings(driver, coDriver);
+    drivetrainMechanism.configureButtonBindings(driver, coDriver);
+    indexerMechanism.configureButtonBindings(driver, coDriver);
     intakeMechanism.configureButtonBindings(driver, coDriver);
-    // shooterMechanism.configureButtonBindings(driver, coDriver);
-    // turretMechanism.configureButtonBindings(driver, coDriver);
+    shooterMechanism.configureButtonBindings(driver, coDriver);
+    turretMechanism.configureButtonBindings(driver, coDriver);
   }
 
   /**
