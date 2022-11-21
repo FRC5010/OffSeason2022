@@ -13,10 +13,8 @@ import frc.robot.subsystems.Turret;
 public class Turret_Left extends CommandBase {
   private double speed;
   private Turret turret;
-  private CANSparkMax motor1; 
-  private RelativeEncoder motor1Encoder; 
   
-  public Turret_Left(Turret turret, double speed, CANSparkMax motor1) {
+  public Turret_Left(Turret turret, double speed) {
     addRequirements(turret);
     this.speed = speed;
     this.turret = turret;

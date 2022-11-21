@@ -44,6 +44,6 @@ public class IntakeMechanism {
 
         // Allow either trigger to activate command
         Trigger driverTriggers = new Trigger(() -> (Math.abs(driver.getRightTriggerAxis() + driver.getLeftTriggerAxis()) > 0));
-        driverTriggers.whenActive(new DeployIntake(intakeSubsystem, 0));
+        driverTriggers.whenActive(new DeployIntake(intakeSubsystem, 0, driver));
     }
 }

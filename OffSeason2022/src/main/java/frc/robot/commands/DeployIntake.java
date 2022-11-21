@@ -23,10 +23,11 @@ public class DeployIntake extends CommandBase {
   private double intakeSpeed;
   private final IntakeSubsystem intakeSubsystem;
   private Controller driver;
-  public DeployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed) {
+  public DeployIntake(IntakeSubsystem intakeSubsystem, double intakeSpeed, Controller driver) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.intakeSubsystem = intakeSubsystem;
     this.intakeSpeed = intakeSpeed;
+    this.driver = driver;
     addRequirements(intakeSubsystem);
   }
 
