@@ -28,6 +28,6 @@ public class TurretMechanism {
     }
 
     public void configureButtonBindings(Controller driver, Controller coDriver) {
-        coDriver.createAButton().whileHeld(new Turret_Left(turret, 0.1));
-        coDriver.createBButton().whileHeld(new Turret_Left(turret, -0.1));
+        coDriver.createXButton().whileHeld(new Turret_Left(turret, 0.1));
+        coDriver.createYButton().whileHeld(new Turret_Left(turret, -0.1));
     }}
